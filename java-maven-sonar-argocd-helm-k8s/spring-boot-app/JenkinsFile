@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'sravankumar1006/maven-abhishek-docker-agent:v1'
-      args '--user root --entrypoint=tail -v /var/run/docker.sock:/var/run/docker.sock'
+      args '--entrypoint=tail --user root -v /var/run/docker.sock:/var/run/docker.sock'
 }
 }
   stages {
