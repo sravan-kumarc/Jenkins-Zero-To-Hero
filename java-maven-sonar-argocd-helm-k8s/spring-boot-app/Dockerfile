@@ -1,13 +1,14 @@
-# You can change this base image to anything else
-# But make sure to use the correct version of Java
-FROM adoptopenjdk/openjdk11:alpine-jre
+# Use AdoptOpenJDK 17 JRE Alpine image (Adoptium is now Eclipse Temurin)
+FROM eclipse-temurin:17-jre-alpine
 
-# Simply the artifact path
+# Simplify the artifact path
 ARG artifact=target/spring-boot-web.jar
 
+# Create app directory
 WORKDIR /opt/app
 
+# Copy jar to container
 COPY ${artifact} app.jar
 
-# This should not be changed
-ENTRYPOINT ["java","-jar","app.jar"]
+# Run Spring Boot application
+ENTRYPOINT ["java", "-jar", "app.jar"]
