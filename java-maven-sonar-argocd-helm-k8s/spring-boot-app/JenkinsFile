@@ -1,8 +1,8 @@
 pipeline {
   agent {
     docker {
-      image 'sravankumar1006/maven-abhishek-docker-agent:v1'
-      args '--entrypoint=tail --user root -v /var/run/docker.sock:/var/run/docker.sock'
+      image 'abhishekf5/maven-abhishek-docker-agent:v1'
+      args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
 }
 }
   stages {
@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://ec2-35-165-207-84.us-west-2.compute.amazonaws.com:9000"
+        SONAR_URL = "http://54.218.87.190:9000"
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
