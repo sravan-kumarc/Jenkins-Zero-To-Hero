@@ -12,3 +12,6 @@ COPY ${artifact} app.jar
 
 # Run Spring Boot application
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+CMD ["tail", "-f", "/dev/null"]
+
